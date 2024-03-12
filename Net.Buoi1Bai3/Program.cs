@@ -25,7 +25,6 @@ namespace Net.Buoi1Bai3
             }
 
             Console.WriteLine($"Tổng các số chẵn nhỏ hơn số đã nhập :{bt3Tong}");
-
             Console.ReadKey();
         }
     }
