@@ -1,0 +1,7 @@
+D:\khoa_hoc_cshap\Net.BaiTapThucHanh\Net.BaiTapThucHanh\bin\Debug\Net.BaiTapThucHanh.exe.config
+D:\khoa_hoc_cshap\Net.BaiTapThucHanh\Net.BaiTapThucHanh\bin\Debug\Net.BaiTapThucHanh.exe
+D:\khoa_hoc_cshap\Net.BaiTapThucHanh\Net.BaiTapThucHanh\bin\Debug\Net.BaiTapThucHanh.pdb
+D:\khoa_hoc_cshap\Net.BaiTapThucHanh\Net.BaiTapThucHanh\obj\Debug\Net.BaiTapThucHanh.csproj.AssemblyReference.cache
+D:\khoa_hoc_cshap\Net.BaiTapThucHanh\Net.BaiTapThucHanh\obj\Debug\Net.BaiTapThucHanh.csproj.CoreCompileInputs.cache
+D:\khoa_hoc_cshap\Net.BaiTapThucHanh\Net.BaiTapThucHanh\obj\Debug\Net.BaiTapThucHanh.exe
+D:\khoa_hoc_cshap\Net.BaiTapThucHanh\Net.BaiTapThucHanh\obj\Debug\Net.BaiTapThucHanh.pdb
