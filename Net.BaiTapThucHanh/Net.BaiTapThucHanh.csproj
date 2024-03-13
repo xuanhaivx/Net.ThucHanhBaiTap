@@ -48,6 +48,10 @@
     <Compile Include="Buoi1Bai3.cs" />
     <Compile Include="Buoi2Bai1.cs" />
     <Compile Include="Buoi2Bai2.cs" />
+    <Compile Include="Buoi2Bai3.cs" />
+    <Compile Include="Buoi2Bai4.cs" />
+    <Compile Include="Buoi2Bai5.cs" />
+    <Compile Include="Buoi2Bai6.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
