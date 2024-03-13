@@ -11,6 +11,40 @@ namespace Net.BaiTapThucHanh
         public void B2Buoi1()
         {
             //In dãy số nguyên tố nhỏ hơn số được nhập vào từ bàn phím
+            int _nhapso;
+            Console.Write("Nhập một số bất kỳ :");
+            bool _ktso = int.TryParse(Console.ReadLine(), out _nhapso);
+            while (!_ktso || _nhapso <= 1 || _nhapso > 1000000)
+            {
+                if (!_ktso)
+                {
+                    Console.WriteLine("Bạn cần phải nhập số vào bàn phím");
+
+                }
+                else if (_nhapso > 1000000)
+                {
+                    Console.WriteLine("Số bạn nhập phải nhỏ hơn hoặc bằng 1000000.");
+                }
+                else if (_nhapso <= 1)
+                {
+                    Console.WriteLine("Số bạn nhập cần phải lớn hơn 1.");
+                }
+                _ktso = int.TryParse(Console.ReadLine(), out _nhapso);
+            }
+                        
+            for (int i = 2; i <= _nhapso; i++)
+            {
+                for (int j = 2; j <= Math.Sqrt(i); j++)
+                {
+                    if (i%j==0)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine(i);
+                }
+               
+
+            }
 
         }
     }

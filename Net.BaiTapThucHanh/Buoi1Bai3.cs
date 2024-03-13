@@ -15,7 +15,7 @@ namespace Net.BaiTapThucHanh
                         Console.Write("Bạn hãy nhập một số bất kỳ  : ");
             bool ktso1 = int.TryParse(Console.ReadLine(), out so1);
 
-            while (!ktso1 || so1 <= 0 || so1 >= 100000)
+            while (!ktso1 || so1 < 0 || so1 > 100000)
             {
                 if (so1 < 0)
                 {
@@ -23,7 +23,7 @@ namespace Net.BaiTapThucHanh
                 }
                 else if (!ktso1)
                 {
-                    Console.WriteLine("Bạn phải nhập số vào");
+                    Console.WriteLine("Bạn phải nhập số vào và số phải nhỏ hơn 100000");
                 }
                 else if (so1 > 100000)
                 {

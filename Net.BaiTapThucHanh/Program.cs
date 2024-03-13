@@ -18,9 +18,11 @@ namespace Net.BaiTapThucHanh
             //Buoi1Bai2 kqB1Bai2 = new Buoi1Bai2();
             //kqB1Bai2.B1Bai2();
 
-            Buoi1Bai3 kqB1Bai3 = new Buoi1Bai3();
-            kqB1Bai3.B1Bai3();
+            //Buoi1Bai3 kqB1Bai3 = new Buoi1Bai3();
+            //kqB1Bai3.B1Bai3();
 
+            Buoi2Bai1 kqB2Bai1 = new Buoi2Bai1();
+            kqB2Bai1.B2Buoi1();
 
             Console.ReadKey();
 
