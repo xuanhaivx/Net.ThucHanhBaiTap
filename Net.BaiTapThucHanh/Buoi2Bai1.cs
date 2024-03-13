@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,20 +32,27 @@ namespace Net.BaiTapThucHanh
                 }
                 _ktso = int.TryParse(Console.ReadLine(), out _nhapso);
             }
-                        
-            for (int i = 2; i <= _nhapso; i++)
-            {
-                for (int j = 2; j <= Math.Sqrt(i); j++)
-                {
-                    if (i%j==0)
-                    {
-                        continue;
-                    }
-                    Console.WriteLine(i);
-                }
-               
 
+
+     
+            for (int i = 2; i <=_nhapso; i++)
+            {
+                int _songuyen = 0;
+                for (int j = 2; j <= i / 2; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        _songuyen++;
+                        break;
+                    }
+                }
+
+                if (_songuyen == 0)
+                {
+                    Console.WriteLine("Số :" + i);
+                }
             }
+            Console.ReadKey();
 
         }
     }
