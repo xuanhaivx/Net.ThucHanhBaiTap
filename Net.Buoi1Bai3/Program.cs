@@ -12,19 +12,29 @@ namespace Net.Buoi1Bai3
         {
             Console.OutputEncoding = Encoding.UTF8;
             //Viết chương trình C# tính tổng các số chẵn nhỏ hơn số được nhập từ bàn phím
-            int bt3So;
+           
             int bt3Tong = 0;
-            Console.Write("Bạn hãy nhập số bất kỳ :");
-            bt3So = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < bt3So; i++)
+            int number;
+            bool bt3kiemtra;
+            do
             {
-                if (i % 2 == 0)
+                Console.Write("Bạn hãy nhập số bất kỳ :");
+            string bt3So = Console.ReadLine();
+            bt3kiemtra= int.TryParse(bt3So, out number);
+
+                if{ 
+
+                for (int i = 0; i < number; i++)
                 {
-                    bt3Tong += i;
+                    if (i % 2 == 0)
+                    {
+                        bt3Tong += i;
+                    }
                 }
             }
-
-            Console.WriteLine($"Tổng các số chẵn nhỏ hơn số đã nhập :{bt3Tong}");
+            while (bt3Tong != 0);
+            }
+            else { Console.WriteLine("Lỗi Nhập Vào. Bạn Cần Nhập Số Vào!"); }
             Console.ReadKey();
         }
     }
