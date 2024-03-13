@@ -22,7 +22,7 @@ namespace Net.BaiTapThucHanh
             //kqB1Bai3.B1Bai3();
 
             Buoi2Bai1 kqB2Bai1 = new Buoi2Bai1();
-            kqB2Bai1.B2Buoi1();
+            kqB2Bai1.B2Bai1();
 
             Console.ReadKey();
 

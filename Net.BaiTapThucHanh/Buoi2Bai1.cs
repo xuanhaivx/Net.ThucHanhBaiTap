@@ -9,7 +9,7 @@ namespace Net.BaiTapThucHanh
 {
     internal class Buoi2Bai1
     {
-        public void B2Buoi1()
+        public void B2Bai1()
         {
             //In dãy số nguyên tố nhỏ hơn số được nhập vào từ bàn phím
             int _nhapso;
