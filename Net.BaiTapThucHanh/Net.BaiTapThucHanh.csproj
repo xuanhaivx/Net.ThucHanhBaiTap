@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaiViDu.cs" />
     <Compile Include="Buoi1Bai1.cs" />
     <Compile Include="Buoi1Bai2.cs" />
     <Compile Include="Buoi1Bai3.cs" />
