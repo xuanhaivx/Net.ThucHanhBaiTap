@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Net.BaiTapThucHanh
 {
-    internal class Buoi3Bai1
+    internal class Buoi3BaiTap
     {
         public void B3Bai1()
         {
@@ -71,6 +71,12 @@ namespace Net.BaiTapThucHanh
             TangGiam(mang);
             Console.WriteLine();
             soArmstrong(mang);
+            Console.WriteLine();
+            TongCacSoNguyenTo(mang);
+            Console.WriteLine() ;
+            int tongChan = 0, tongLe = 0;
+            TinhTongChanLeThamChieu(mang, ref tongChan, ref tongLe);
+            Console.WriteLine($"Tổng số chẵn: {tongChan}, Tổng số lẻ: {tongLe}");
         }
         public void ChanLe(int[] mang)
         {
@@ -83,7 +89,7 @@ namespace Net.BaiTapThucHanh
                     Console.Write(i+", ");
                 }
             }
-            Console.WriteLine("Các số chẵn là :");
+            Console.WriteLine("Các số Lẻ là :");
             foreach (int i in mang)
             {
                 if ((i % 2) != 0) 
@@ -95,48 +101,99 @@ namespace Net.BaiTapThucHanh
         }
         public void TangGiam(int[] mang)
         {
-            Console.WriteLine("Sắp xếp tăng dần các phần tử đã nhập :");
+            Console.WriteLine("Sắp xếp giảm dần các phần tử đã nhập:");
             int doiCho;
             for (int i = 0; i < mang.Length; i++)
             {
-                for (int j = i+1; j < mang.Length; j++)
+                for (int j = i + 1; j < mang.Length; j++)
                 {
-                    
                     if (mang[i] < mang[j])
                     {
                         doiCho = mang[i];
                         mang[i] = mang[j];
-                        mang[j] = doiCho; 
-
+                        mang[j] = doiCho;
                     }
                 }
             }
-                        
-            foreach(int i in mang)
-            {
-                Console.WriteLine(i);
-            }
-            Console.WriteLine("Mảng Giảm dần là :");
-            for (int i = mang.Length-1; i >=0; i--)
+
+            // In mảng giảm dần
+            Console.Write("Mảng sau khi sắp xếp giảm dần: ");
+            foreach (int i in mang)
             {
                 Console.Write(i + " ");
             }
-            
+            Console.WriteLine(); 
+
+            // In lại mảng theo thứ tự giảm dần sử dụng giá trị của mảng
+            Console.Write("Mảng giảm dần : ");
+            for (int i = mang.Length - 1; i >= 0; i--)
+            {
+                Console.Write(mang[i] + " "); // Sử dụng mang[i] để tham chiếu đến giá trị
+            }
+            Console.WriteLine(); // Xuống dòng
         }
         public void soArmstrong(int[] mang)
         {
-            int tong = 0;
             for (int i = 0; i < mang.Length; i++)
             {
-                int soChu = mang[i].ToString().Length;
-                tong += (int)Math.Pow(mang[i] % 10, soChu);
-                if (tong==mang[i])
+                int soTam = mang[i];
+                int soChu = soTam.ToString().Length;
+                int tong = 0;
+                while (soTam > 0)
                 {
-                    Console.WriteLine(i+ " - là số Armstron");
+                    int chuSo = soTam % 10;
+                    tong += (int)Math.Pow(chuSo, soChu);
+                    soTam /= 10;
+                }
+
+                if (tong == mang[i])
+                {
+                    Console.WriteLine(mang[i] + " - là số Armstrong");
                 }
                 else
                 {
-                    Console.WriteLine(i + " - Không phải số Armstron ");
+                    Console.WriteLine(mang[i] + " - Không phải số Armstrong");
+                }
+            }
+        }
+        public void TongCacSoNguyenTo(int[] mang)
+        {
+            int tongSoNguyen = 0;
+            for (int i = 0; i < mang.Length; i++)
+            {
+                int soNguyen = mang[i];
+                if (soNguyen < 2) continue; // Số nguyên tố phải lớn hơn 1
+
+                bool laSoNguyenTo = true;
+                for (int j = 2; j * j <= soNguyen; j++)
+                {
+                    if (soNguyen % j == 0)
+                    {
+                        laSoNguyenTo = false;
+                        break; // Dừng vòng lặp nếu tìm thấy ước số, đây không phải số nguyên tố
+                    }
+                }
+
+                if (laSoNguyenTo)
+                {
+                    tongSoNguyen += soNguyen; // Chỉ cộng dồn khi là số nguyên tố
+                }
+            }
+            Console.WriteLine("Tổng các số nguyên tố bằng " + tongSoNguyen);
+        }
+        public void TinhTongChanLeThamChieu(int[] mang, ref int tongChan, ref int tongLe)
+        {
+            tongChan = 0;
+            tongLe = 0;
+            foreach (int i in mang)
+            {
+                if (i % 2 == 0)
+                {
+                    tongChan += i;
+                }
+                else
+                {
+                    tongLe += i;
                 }
             }
         }

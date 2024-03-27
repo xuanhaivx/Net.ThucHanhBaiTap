@@ -41,7 +41,7 @@ namespace Net.BaiTapThucHanh
             //BaiViDu viDu = new BaiViDu();
             //viDu.xepMang();
 
-            Buoi3Bai1 kqB3Bai1 = new Buoi3Bai1();
+            Buoi3BaiTap kqB3Bai1 = new Buoi3BaiTap();
             kqB3Bai1.B3Bai1();
 
             Console.ReadKey();
