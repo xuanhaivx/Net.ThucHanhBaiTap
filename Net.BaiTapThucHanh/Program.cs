@@ -38,8 +38,11 @@ namespace Net.BaiTapThucHanh
 
             //Buoi2Bai6 kqB2Bai6 = new Buoi2Bai6();
             //kqB2Bai6.B2Bai6();
-            BaiViDu viDu = new BaiViDu();
-            viDu.xepMang();
+            //BaiViDu viDu = new BaiViDu();
+            //viDu.xepMang();
+
+            Buoi3Bai1 kqB3Bai1 = new Buoi3Bai1();
+            kqB3Bai1.B3Bai1();
 
             Console.ReadKey();
 

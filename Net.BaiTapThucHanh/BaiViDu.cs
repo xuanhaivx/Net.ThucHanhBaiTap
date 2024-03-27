@@ -25,7 +25,7 @@ namespace Net.BaiTapThucHanh
         {
             int doicho;
            for (int j = 0; j < array.Length; j++) {
-                for (int i = 0; i < array.Length - 1 - j; i++)
+                for (int i = 0; i < array.Length; i++)
                 {
 
                     if (array[i] > array[i + 1])
