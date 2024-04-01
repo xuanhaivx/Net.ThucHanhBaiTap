@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Net.BaiTapThucHanh.BaiViDu;
 
 namespace Net.BaiTapThucHanh
 {
@@ -41,8 +42,12 @@ namespace Net.BaiTapThucHanh
             //BaiViDu viDu = new BaiViDu();
             //viDu.xepMang();
 
-            Buoi3BaiTap kqB3Bai1 = new Buoi3BaiTap();
-            kqB3Bai1.B3Bai1();
+            //Buoi3BaiTap kqB3Bai1 = new Buoi3BaiTap();
+            //kqB3Bai1.B3Bai1();
+            //BaiViDu strvidu = new BaiViDu();
+            //strvidu.ViDu();
+            Buoi4Bai1 kqB4Bai1 = new Buoi4Bai1();
+            kqB4Bai1.B4Bai1();
 
             Console.ReadKey();
 
