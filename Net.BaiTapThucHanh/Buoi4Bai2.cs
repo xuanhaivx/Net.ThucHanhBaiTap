@@ -139,7 +139,7 @@ namespace Net.BaiTapThucHanh
         {
             Console.WriteLine("Nhập tên học sinh cần tìm:");
             string tenHocSinhCanTim = Console.ReadLine();
-            var ketQuaTimHS = TimKiemSachTheoTieuDe(tenHocSinhCanTim);
+            var ketQuaTimHS = TimKiemHocSinhTheoTen(tenHocSinhCanTim);
 
             if (ketQuaTimHS.Count > 0)
             {
@@ -168,7 +168,7 @@ namespace Net.BaiTapThucHanh
             }
         }
 
-        private List<QuanLyHocSinh> TimKiemSachTheoTieuDe(string TenHS)
+        private List<QuanLyHocSinh> TimKiemHocSinhTheoTen(string TenHS)
         {
             List<QuanLyHocSinh> ketQuaChinhXac = new List<QuanLyHocSinh>();
             foreach (var timHocSinh in listHocSinh)
