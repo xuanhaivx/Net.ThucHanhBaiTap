@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,56 +14,36 @@ namespace Net.BaiTapThucHanh
         //viết hàm để sắp xếp dãy tăng dần
         public void ViDu()
         {
-            var strSinhVien = new SinhVien();
-            bool hopLe = false;
+            // Viết chương trình tính tuổi của mình. Nhập vào ngày sinh và in ra xem mình bao nhiêu ngày, bao nhiêu tuổi.
+            DateTime sinhNhat;
             do
             {
-                Console.WriteLine("Bạn hãy nhập ID Sinh viên :");
-                strSinhVien.IDSinhVien = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Bạn hãy nhập Tên Sinh Viên :");
-                strSinhVien.TenSinhVien = Console.ReadLine();
-                Console.WriteLine("Bạn hãy nhập Giới Tính SinH Viên :");
-                strSinhVien.GioiTinhSinhVien = Console.ReadLine();
-                Console.WriteLine("Bạn hãy nhập Tuổi Sinh Viên :");
-                strSinhVien.TuoiSinhVien = Convert.ToInt32(Console.ReadLine());
-                if (strSinhVien.IDSinhVien <= 0)
-                {
-                    Console.WriteLine("Id Phải Là Số:");
+                Console.WriteLine("Bạn vui lòng nhập ngày tháng năm sinh của bạn!");
+                Console.WriteLine("Nhập Ngày Sinh :");
+                int nhapNgaySinh = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Nhập Tháng Sinh :");
+                int nhapThangSinh = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Nhập Năm Sinh :");
+                int nhapNamSinh = Convert.ToInt32(Console.ReadLine());
+                
+                string thoiGianNhap = $"{nhapNgaySinh}/{nhapThangSinh}/{nhapNamSinh}";
+                if (DateTime.TryParseExact(thoiGianNhap, "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out sinhNhat))
+                    {
+                    break;
                 }
-                else if (strSinhVien.TuoiSinhVien <= 0)
+                else
                 {
-                    Console.WriteLine("Tuổi SinH Viên Phải Là Số!");
+                    Console.WriteLine("Ngày tháng bạn nhập vào không hợp lệ. Vui lòng nhập lại");
                 }
-            } while (strSinhVien.IDSinhVien <= 0 || strSinhVien.TuoiSinhVien <= 0);
+
+            } while (true);
+            TimeSpan tuoi = DateTime.Now - sinhNhat;
+
+            Console.WriteLine("Sinh Ra Được Bao Nhiêu Ngày : " + (int)Math.Round(tuoi.TotalDays));
+            Console.WriteLine("Sinh Ra Được Bao Nhiêu Ngày : " + (int)Math.Round(tuoi.TotalDays/365));
 
 
 
-
-            Console.WriteLine(" ID SinH Viên Là : " + strSinhVien.IDSinhVien);
-            Console.WriteLine(" Tên Sinh Viên : " + strSinhVien.TenSinhVien);
-            Console.WriteLine(" Giới Tính SinH viên Là : " + strSinhVien.GioiTinhSinhVien);
-            Console.WriteLine(" Tuổi Sinh Viên Là : " + strSinhVien.TuoiSinhVien);
-
-        }
-        public struct SinhVien
-        {
-            public int IDSinhVien { get; set; }
-            public string TenSinhVien { get; set; }
-            public String GioiTinhSinhVien { set; get; }
-            public int TuoiSinhVien { set; get; }
-
-            public SinhVien (int _idsinhvien,String _tensinhvien,String _gioitinhsinhvien, int _tuoisinhvien)
-            {
-                IDSinhVien = _idsinhvien;
-                TenSinhVien = _tensinhvien;
-                GioiTinhSinhVien = _gioitinhsinhvien;
-                TuoiSinhVien= _tuoisinhvien;
-            }
-        }
-        enum DonHang
-        {
-            DaDatHang = 1,
-            GiaHang = 2
         }
     }
 }
