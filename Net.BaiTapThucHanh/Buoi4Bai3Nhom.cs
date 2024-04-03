@@ -130,7 +130,8 @@ namespace Net.BaiTapThucHanh
                 bool ngayHopLe;
                 do
                 {
-                    ngayHopLe = DateTime.TryParse(Console.ReadLine(), out ngayPhatHanhHoaDon);
+                    // Sử dụng TryParseExact với định dạng "dd/MM/yyyy" và CultureInfo.InvariantCulture để phân tích chuỗi ngày tháng
+                    ngayHopLe = DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out ngayPhatHanhHoaDon);
                     if (!ngayHopLe || ngayPhatHanhHoaDon > DateTime.Today) // Kiểm tra nhập thời gian hóa đơn là hợp lệ và không phải của tương lai.
                     {
                         Console.WriteLine("Ngày nhập không hợp lệ hoặc lớn hơn ngày hiện tại, vui lòng nhập lại:");
