@@ -44,12 +44,14 @@ namespace Net.BaiTapThucHanh
 
             //Buoi3BaiTap kqB3Bai1 = new Buoi3BaiTap();
             //kqB3Bai1.B3Bai1();
-            BaiViDu strvidu = new BaiViDu();
-            strvidu.ViDu();
+            //BaiViDu strvidu = new BaiViDu();
+            //strvidu.ViDu();
             //Buoi4Bai1 kqB4Bai1 = new Buoi4Bai1();
             //kqB4Bai1.B4Bai1();
             //Buoi4Bai2 kqB4Bai2 = new Buoi4Bai2();
             //kqB4Bai2.B4Bai2();
+            Buoi4Bai3Nhom kqB4BaiNhom = new Buoi4Bai3Nhom();
+            kqB4BaiNhom.B4Bai3();
 
             Console.ReadKey();
 

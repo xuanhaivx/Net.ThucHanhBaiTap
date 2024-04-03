@@ -1,0 +1,21 @@
+Mã Hóa Đơn: hsh3232
+Ngày Phát Hành Hóa Đơn: 12/12/1993
+Tổng Tiền Hóa Đơn: 19000000
+Số Tiền Còn Nợ: 0
+Trạng Thái Nợ: Không nợ
+Tên Khách Hàng: H?i
+-----------------------
+Mã Hóa Đơn: 34hw3
+Ngày Phát Hành Hóa Đơn: 11/12/2011
+Tổng Tiền Hóa Đơn: 19909203
+Số Tiền Còn Nợ: 0
+Trạng Thái Nợ: Không nợ
+Tên Khách Hàng: Khánh
+-----------------------
+Mã Hóa Đơn: 32323423f
+Ngày Phát Hành Hóa Đơn: 12/11/1999
+Tổng Tiền Hóa Đơn: 1999
+Số Tiền Còn Nợ: 0
+Trạng Thái Nợ: Không nợ
+Tên Khách Hàng: linh
+-----------------------
