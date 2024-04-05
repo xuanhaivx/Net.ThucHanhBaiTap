@@ -57,6 +57,8 @@
     <Compile Include="Buoi4Bai1.cs" />
     <Compile Include="Buoi4Bai2.cs" />
     <Compile Include="Buoi4Bai3Nhom.cs" />
+    <Compile Include="Buoi5Bai1.cs" />
+    <Compile Include="Buoi5Bai2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

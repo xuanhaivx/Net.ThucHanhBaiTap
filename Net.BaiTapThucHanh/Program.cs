@@ -26,7 +26,7 @@ namespace Net.BaiTapThucHanh
             //kqB2Bai1.B2Bai1();
 
             //Buoi2Bai2 kqB2Bai2 = new B56uoi2Bai2();
-            //kqB2Bai2.B2Bai2();f
+            //kqB2Bai2.B2Bai2();
 
             //Buoi2Bai3 kqB2Bai3 = new Buoi2Bai3();
             //kqB2Bai3.B2bai3();
@@ -50,9 +50,10 @@ namespace Net.BaiTapThucHanh
             //kqB4Bai1.B4Bai1();
             //Buoi4Bai2 kqB4Bai2 = new Buoi4Bai2();
             //kqB4Bai2.B4Bai2();
-            Buoi4Bai3Nhom kqB4BaiNhom = new Buoi4Bai3Nhom();
-            kqB4BaiNhom.B4Bai3();
-
+            //Buoi4Bai3Nhom kqB4BaiNhom = new Buoi4Bai3Nhom();
+            //kqB4BaiNhom.B4Bai3();
+            Buoi5Bai1 kqB5B1 = new Buoi5Bai1();
+            kqB5B1.MenuB5B1();
             Console.ReadKey();
 
         }
