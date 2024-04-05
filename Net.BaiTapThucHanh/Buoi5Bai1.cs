@@ -58,7 +58,7 @@ namespace Net.BaiTapThucHanh
                             HienThiNhanVien();
                             break;
                         case 3:
-                            Console.WriteLine("Số lượng nhân viên bạn muốn nhập");
+                            Console.WriteLine("Sắp Xếp Nhân Viên Theo Ngày Sinh : 1- Tăng, 2- Giảm");
                             
                             int thuTu = Convert.ToInt32(Console.ReadLine());
                             SapXepNhanVien(thuTu);
@@ -118,17 +118,17 @@ namespace Net.BaiTapThucHanh
                 return false;
             }
 
-            if (Regex.IsMatch(maNhanhVien, "[^a-zA-Z0-9\\s]"))
+            if (!Regex.IsMatch(maNhanhVien, "^^[\\p{L}\\p{N}\\s]+$"))
             {
                 Console.WriteLine("Mã nhân viên chỉ có thể chứa chữ cái và số ");
                 return false;
             }
-            if (Regex.IsMatch(hoNhanVien, "[^a-zA-Z\\s]"))
+            if (!Regex.IsMatch(hoNhanVien, "^[\\p{L}\\s]+$"))
             {
                 Console.WriteLine("Họ nhân viên chỉ có thể chứ chữ cái ");
                 return false;
             }
-            if (Regex.IsMatch(tenNhanVien, "[^a-zA-Z\\s]"))
+            if (!Regex.IsMatch(tenNhanVien, "^[\\p{L}\\s]+$"))
             {
                 Console.WriteLine("Tên nhân viên chỉ có thể chứ chữ cái");
                 return false;
@@ -185,8 +185,8 @@ namespace Net.BaiTapThucHanh
         {
             foreach (var nv in QLNhanVien)
             {
-                Console.WriteLine($"Mã Nhân Viên : {nv.TenNhanhVien}.\n Tên Nhân Viên : {nv.HoNhanVien} {nv.TenNhanhVien}." +
-                    $"\n Ngày Sinh Nhân Viên : {nv.NgaySinhNhanVien}.\n Ngày Vào Làm : {nv.NgayVaoLam}");
+                Console.WriteLine($"Mã Nhân Viên : {nv.MaNhanVien}.\n Tên Nhân Viên : {nv.HoNhanVien} {nv.TenNhanhVien}." +
+                    $"\n Ngày Sinh Nhân Viên : {nv.NgaySinhNhanVien.ToString("dd/MM/yyyy")}.\n Ngày Vào Làm : {nv.NgayVaoLam.ToString("dd/MM/yyyy")}");
                 Console.WriteLine("-------------");
             }
         }
