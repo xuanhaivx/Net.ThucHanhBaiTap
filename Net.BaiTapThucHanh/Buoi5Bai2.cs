@@ -35,7 +35,7 @@ namespace Net.BaiTapThucHanh
                 Console.WriteLine("Nhấn 1 - Nhập Sản Phẩm");
                 Console.WriteLine("Nhấn 2 - Xem Sản Phẩm Sắp Hết Hạn");
                 Console.WriteLine("Nhấn 3 - Sản phẩm Có Có Hơn 10 Ký Tự");
-                Console.WriteLine("Nhấn 3 -Thoát Chương Trình");
+                Console.WriteLine("Nhấn 4 -Thoát Chương Trình");
                 try {
                     int nhan = Convert.ToInt32(Console.ReadLine());
                     switch (nhan)
@@ -58,7 +58,10 @@ namespace Net.BaiTapThucHanh
                             break;
                         case 3: SPTenDai(); 
                             break;  
-                        case 4: return;
+                        case 4:
+                            Console.WriteLine("Thoát chương trình...");
+                            Environment.Exit(0);
+                            break;
                         default: Console.WriteLine("Bạn nhập không đúng!")  
                                 ; break;
                     }

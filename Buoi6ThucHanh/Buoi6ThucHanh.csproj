@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F3F7618-D4A7-4492-B493-2943CC603339}</ProjectGuid>
+    <ProjectGuid>{476EC896-BEDA-432E-8E98-D296A85594A7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Net.BaiTapThucHanh</RootNamespace>
-    <AssemblyName>Net.BaiTapThucHanh</AssemblyName>
+    <RootNamespace>Buoi6ThucHanh</RootNamespace>
+    <AssemblyName>Buoi6ThucHanh</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,28 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaiViDu.cs" />
-    <Compile Include="Buoi1Bai1.cs" />
-    <Compile Include="Buoi1Bai2.cs" />
-    <Compile Include="Buoi1Bai3.cs" />
-    <Compile Include="Buoi2Bai1.cs" />
-    <Compile Include="Buoi2Bai2.cs" />
-    <Compile Include="Buoi2Bai3.cs" />
-    <Compile Include="Buoi2Bai4.cs" />
-    <Compile Include="Buoi2Bai5.cs" />
-    <Compile Include="Buoi2Bai6.cs" />
-    <Compile Include="Buoi3BaiTap.cs" />
-    <Compile Include="Buoi4Bai1.cs" />
-    <Compile Include="Buoi4Bai2.cs" />
-    <Compile Include="Buoi4Bai3Nhom.cs" />
-    <Compile Include="Buoi5Bai1.cs" />
-    <Compile Include="Buoi5Bai2.cs" />
+    <Compile Include="Buoi6Bai1.cs" />
+    <Compile Include="Buoi6Bai2.cs" />
+    <Compile Include="Buoi6Bai3.cs" />
+    <Compile Include="CheckDulieu.cs" />
+    <Compile Include="Mygeneric.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

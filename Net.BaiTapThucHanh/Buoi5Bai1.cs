@@ -68,7 +68,9 @@ namespace Net.BaiTapThucHanh
                             NhanVien5nam();
                             break;
                         case 5:
-                            return;
+                            Console.WriteLine("Thoát chương trình...");
+                            Environment.Exit(0);
+                            break;
 
                         default:
                             Console.WriteLine("Số bạn nhập không đúng");

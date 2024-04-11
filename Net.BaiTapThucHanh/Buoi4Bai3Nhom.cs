@@ -3,13 +3,86 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static Net.BaiTapThucHanh.Buoi4Bai2;
 using static Net.BaiTapThucHanh.Buoi4Bai3Nhom;
 
 namespace Net.BaiTapThucHanh
 {
-    internal class Buoi4Bai3Nhom
+    internal class CheckInput
+    {
+        public bool ContainsNumber(string input)
+        {
+            if (input.Any(char.IsDigit))
+            {
+                Console.WriteLine("Không được chứa chữ số!");
+                return true;
+            }
+            else
+                return false;
+        }
+        public bool CheckContainSpecialChar(string input)
+        {
+            Regex specialCharRegex = new Regex(@"[~`!@#$%^&*()+=|\\{}':;,.<>?/""-]");
+            if (specialCharRegex.IsMatch(input))
+            {
+                Console.WriteLine("Không được chứa kí tự đặc biệt!");
+                return true;
+            }
+            else
+                return false;
+        }
+        public bool CheckIsNullOrWhiteSpace(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("Không được để trống hay chỉ chứa khoảng trắng!");
+                return true;
+            }
+            else
+                return false;
+        }
+        public bool CheckDateTime(string input)
+        {
+            if (DateTime.TryParseExact(input, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime date))
+            {
+                DateTime now = DateTime.Now;
+                TimeSpan interval = now - date;
+                if (interval.Days > 0)
+                    return true;
+                else
+                {
+                    Console.WriteLine("Ngày phát hành hóa đơn không được lớn hơn thời gian hiện tại!");
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Định dạng ngày không hợp lệ!");
+                return false;
+            }
+        }
+        public bool CheckMoney(string input, out double money)
+        {
+            if (Double.TryParse(input, out money))
+            {
+                if (money <= 0)
+                {
+                    Console.WriteLine("Số tiền không được bằng 0 hoặc là số âm!");
+                    return false;
+                }
+                else
+                    return true;
+            }
+            else
+            {
+                Console.WriteLine("Số tiền không được quá lớn, không được là kí tự, không để trống hay chứa khoảng trắng!");
+                return false;
+            }
+        }
+    }
+    internal class Buoi4Bai3Nhom : CheckInput
     {
         List<QuanLyHoaDon> QlHoaDon = new List<QuanLyHoaDon>();
         public struct QuanLyHoaDon
@@ -34,13 +107,13 @@ namespace Net.BaiTapThucHanh
             public override string ToString()
             {
                 return $"Mã Hóa Đơn: {MaHoaDon}\nNgày Phát Hành Hóa Đơn: {NgayPhatHanhHoaDon:dd/MM/yyyy}\nTổng Tiền Hóa Đơn: {TongTienHoaDon}\nSố Tiền Còn Nợ: {SoTienConNoHoaDon}\nTrạng Thái Nợ: {(TrangThaiNo ? "Còn nợ" : "Không nợ")}\nTên Khách Hàng: {TenKhachHang}";
-                
+
             }
         }
         public void B4Bai3()
         {
             // Viết menu chương trình 
-            while (true)
+            do
             {
                 Console.WriteLine("\nMENU");
                 Console.WriteLine("1. Nhập danh sách hóa đơn");
@@ -51,112 +124,123 @@ namespace Net.BaiTapThucHanh
                 Console.WriteLine("0. Thoát");
                 Console.Write("Chọn một chức năng: ");
 
-                int chon = Convert.ToInt32(Console.ReadLine());
-
-                switch (chon)
+                string nhap = Console.ReadLine();
+                int chon;
+                if (!Int32.TryParse(nhap, out chon))
                 {
-                    case 1:
-                        Console.Write("Nhập số lượng hóa đơn: ");
-                        int n = Convert.ToInt32(Console.ReadLine());
-                        NhapDanhSachHoaDon(n);
-                        break;
-                    case 2:
-                        XoaNoHoaDon();
-                        break;
-                    case 3:
-                        Console.Write("Nhập mã hóa đơn (để trống nếu muốn xuất tất cả): ");
-                        string maHD = Console.ReadLine();
-                        Console.Write("Trạng thái nợ (1: Còn nợ, 0: Không nợ, Khác: Tất cả): ");
-                        string trangThai = Console.ReadLine();
-                        bool? ttNo = trangThai == "1" ? true : trangThai == "0" ? false : (bool?)null;
-                        XuatDanhSachHoaDon(maHD, ttNo);
-                        break;
-                    case 4:
-                        Console.Write("Nhập số ngày (30, 60, 90): ");
-                        int ngay = Convert.ToInt32(Console.ReadLine());
-                        HoaDonConNoTheoMoc(ngay);
-                        break;
-                    case 5:
-                        XuatHoaDonRaText();
-                        break;
-                    case 0:
-                        return;
-                    default:
-                        Console.WriteLine("Lựa chọn không hợp lệ.");
-                        break;
+                    Console.WriteLine("Lựa chọn không hợp lệ, mời nhập lại!");
                 }
-            }
+                else
+                {
+                    switch (chon)
+                    {
+                        case 1:
+                            Console.Write("Nhập số lượng hóa đơn: ");
+                            int n = Convert.ToInt32(Console.ReadLine());
+                            NhapDanhSachHoaDon(n);
+                            break;
+                        case 2:
+                            XoaNoHoaDon();
+                            break;
+                        case 3:
+                            Console.Write("Nhập mã hóa đơn (để trống nếu muốn xuất tất cả): ");
+                            string maHD = Console.ReadLine();
+                            Console.Write("Trạng thái nợ (1: Còn nợ, 0: Không nợ, Khác: Tất cả): ");
+                            string trangThai = Console.ReadLine();
+                            bool? ttNo = trangThai == "1" ? true : trangThai == "0" ? false : (bool?)null;
+                            XuatDanhSachHoaDon(maHD, ttNo);
+                            break;
+                        case 4:
+                            Console.Write("Nhập số ngày (30, 60, 90): ");
+                            int ngay = Convert.ToInt32(Console.ReadLine());
+                            HoaDonConNoTheoMoc(ngay);
+                            break;
+                        case 5:
+                            XuatHoaDonRaText();
+                            break;
+                        case 0:
+                            Console.WriteLine("Thoát chương trình...");
+                            Environment.Exit(0);
+                            break;
+                        default:
+                            Console.WriteLine("Lựa chọn không hợp lệ.");
+                            break;
+                    }
+                }
+            } while (true);
         }
-        public bool KiemTraLoi(string maHoaDon, double tongTienHoaDon, double soTienConNoHoaDon, string tenKhachHang)
-        {
-            
-            if (string.IsNullOrWhiteSpace(maHoaDon)) // Kiểm tra xem đã nhập vào chưa hoặc nhập toàn khoảng trắng.
-            {
-                Console.WriteLine("Hóa Đơn Phải chứa Ký Tự");
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(tenKhachHang))
-            {
-                Console.WriteLine("Tên Khách Hàng Phải chứa Ký Tự");
-                return false;
-            }            
-            if (tenKhachHang.Any(char.IsDigit)) // kiểm tra xem tên nhập có chứa số hay không.
-            {
-                Console.WriteLine("Tên Nhập Không Được Phép Có Số !");
-                return false;
-            }
-            if (tongTienHoaDon < 0) // Tiền Hành Toán Không Thể Là âm
-            {
-                Console.WriteLine("Vui lòng nhập lại Tiền Hóa Đơn");
-                return false;
-            }
-            if (soTienConNoHoaDon < 0) // Tiền nợ không thể là âm
-            {
-                Console.WriteLine("Số tiền còn nợ hóa đơn không thể là số âm");
-                return false;
-            }
-            return true;
-        }
+
         public void NhapDanhSachHoaDon(int n) // Tham số n. Số lượng hóa đơn cần nhập n
         {
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine("Nhập thông tin hóa đơn thứ " + (i + 1));
-                Console.WriteLine("Mã Hóa Đơn:");
-                string maHoaDon = Console.ReadLine();
-
-                Console.WriteLine("Thêm Ngày Phát Hành (dd/MM/yyyy):");
-                DateTime ngayPhatHanhHoaDon;
-                bool ngayHopLe;
+                bool valid;
+                // Nhập mã hóa đơn
+                string maHoaDon;
                 do
                 {
-                    // Sử dụng TryParseExact với định dạng "dd/MM/yyyy" và CultureInfo.InvariantCulture để phân tích chuỗi ngày tháng
-                    ngayHopLe = DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out ngayPhatHanhHoaDon);
-                    if (!ngayHopLe || ngayPhatHanhHoaDon > DateTime.Today) // Kiểm tra nhập thời gian hóa đơn là hợp lệ và không phải của tương lai.
+                    Console.Write("Mã Hóa Đơn:");
+                    maHoaDon = Console.ReadLine();
+                    if (CheckContainSpecialChar(maHoaDon) || CheckIsNullOrWhiteSpace(maHoaDon))
+                        valid = false;
+                    else valid = true;
+                } while (!valid);
+
+                // Nhập ngày phát hành
+                DateTime ngayPhatHanhHoaDon = new DateTime();
+                do
+                {
+                    Console.Write("Thêm Ngày Phát Hành (dd/MM/yyyy):");
+                    string ngayHopLe = Console.ReadLine();
+                    if (CheckDateTime(ngayHopLe))
                     {
-                        Console.WriteLine("Ngày nhập không hợp lệ hoặc lớn hơn ngày hiện tại, vui lòng nhập lại:");
+                        ngayPhatHanhHoaDon = DateTime.ParseExact(ngayHopLe, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
+                        valid = true;
                     }
-                } while (!ngayHopLe || ngayPhatHanhHoaDon > DateTime.Today);
-                Console.WriteLine("Tổng Tiền Thanh Toán:");
-                double tongTienHoaDon = Convert.ToDouble(Console.ReadLine());
+                    else
+                        valid = false;
+                } while (!valid);
 
-                Console.WriteLine("Số Tiền Còn Nợ Hóa Đơn:");
-                double soTienConNoHoaDon = Convert.ToDouble(Console.ReadLine());
+                // Nhập tổng tiền thanh toán
+                double tongTienHoaDon;
+                string tongTien;
+                do
+                {
+                    Console.Write("Tổng Tiền Thanh Toán:");
+                    tongTien = Console.ReadLine();
+                    if (CheckMoney(tongTien, out tongTienHoaDon))
+                        valid = true;
+                    else valid = false;
+                } while (!valid);
 
+                // Nhập số tiền còn nợ
+                double soTienConNoHoaDon;
+                string tienNo;
+                do
+                {
+                    Console.Write("Số Tiền Còn Nợ Hóa Đơn:");
+                    tienNo = Console.ReadLine();
+                    if (CheckMoney(tienNo, out soTienConNoHoaDon))
+                        valid = true;
+                    else valid = false;
+                } while (!valid);
+
+                // Cập nhật trạng thái nợ
                 bool trangThaiNo = soTienConNoHoaDon > 0;
 
-                Console.WriteLine("Tên Khách Hàng:");
-                string tenKhachHang = Console.ReadLine();
+                // Nhập tên khách hàng
+                string tenKhachHang;
+                do
+                {
+                    Console.Write("Tên Khách Hàng:");
+                    tenKhachHang = Console.ReadLine();
+                    if (CheckContainSpecialChar(tenKhachHang) || CheckIsNullOrWhiteSpace(tenKhachHang) || ContainsNumber(tenKhachHang))
+                        valid = false;
+                    else valid = true;
+                } while (!valid);
 
-                if (KiemTraLoi(maHoaDon, tongTienHoaDon, soTienConNoHoaDon, tenKhachHang)) // duyệt qua phương thức kiểm tra lỗi. Nếu qua thì thêm hóa đơn vào
-                {
-                    QlHoaDon.Add(new QuanLyHoaDon(maHoaDon, ngayPhatHanhHoaDon, tongTienHoaDon, soTienConNoHoaDon, trangThaiNo, tenKhachHang));
-                    Console.WriteLine("Hóa đơn đã được thêm thành công!");
-                }
-                else
-                {
-                    Console.WriteLine("Có lỗi khi thêm hóa đơn, vui lòng thử lại.");
-                }
+                QlHoaDon.Add(new QuanLyHoaDon(maHoaDon, ngayPhatHanhHoaDon, tongTienHoaDon, soTienConNoHoaDon, trangThaiNo, tenKhachHang));
             }
         }
 
@@ -206,7 +290,7 @@ namespace Net.BaiTapThucHanh
                                                                                       // Trạng thái nợ phù hợp sẽ được gán vào danhSach phù hợp trạng thái.                                                                                     //trạng thái nợ.
             }
 
-            foreach (var hd in danhSach) 
+            foreach (var hd in danhSach)
             {
                 Console.WriteLine(hd.ToString());
                 Console.WriteLine("-------------");
@@ -234,7 +318,7 @@ namespace Net.BaiTapThucHanh
 
             using (StreamWriter sw = new StreamWriter(filePath)) // Tạo đối tượng stream... để ghi đè lên file với được dẫn được khai báo (filePath)
                                                                  // Duyệt qua danhSachKhongNo rồi ghi lên file.
-                    
+
             {
                 foreach (var hd in danhSachKhongNo)
                 {
@@ -246,6 +330,6 @@ namespace Net.BaiTapThucHanh
             Console.WriteLine("Đã xuất hóa đơn không còn nợ ra file text.");
         }
     }
-        
+
 
 }
