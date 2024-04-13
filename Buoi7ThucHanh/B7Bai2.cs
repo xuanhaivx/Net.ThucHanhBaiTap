@@ -9,7 +9,7 @@ namespace Buoi7ThucHanh
 {
     internal class B7Bai2
     {   static List<NhanVien> nhanViens = new List<NhanVien>();
-        public static void Main()
+        public void Main()
         {
             
             bool running = true;
@@ -41,7 +41,7 @@ namespace Buoi7ThucHanh
                 }
             }
         }
-        static void NhapNhanVien()
+        public void NhapNhanVien()
         {
             Console.WriteLine("Nhập số lượng nhân viên: ");
             int n = int.Parse(Console.ReadLine());
@@ -86,7 +86,7 @@ namespace Buoi7ThucHanh
                 }
             }
         }
-        static void TinhLuong()
+        public void TinhLuong()
         {
             foreach (var nhanVien in nhanViens)
             {

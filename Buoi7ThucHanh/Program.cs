@@ -12,8 +12,8 @@ namespace Buoi7ThucHanh
         {
             Console.OutputEncoding = Encoding.UTF8;
             B7Bai1 bai1 = new B7Bai1();
-            //B7Bai1 bai2 = new B7Bai1();
-            //Buoi6Bai3 bai3 = new Buoi6Bai3();
+            B7Bai2 bai2 = new B7Bai2();
+            B7Bai3 bai3 = new B7Bai3();
             while (true)
             {
 
@@ -29,8 +29,8 @@ namespace Buoi7ThucHanh
                     switch (chonBai)
                     {
                         case 1: bai1.MainBai1(); break;
-                        case 2: B7Bai2.Main(); ; break;
-                        //case 3: bai3.Bai3(); break;
+                        case 2: bai2.Main(); ; break;
+                        case 3: bai3.Menu(); break;
 
                         default:
                             Console.WriteLine("bạn nhập không đúng!"); break;

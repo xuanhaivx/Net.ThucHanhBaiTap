@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="B7Bai2.cs" />
+    <Compile Include="B7Bai3.cs" />
     <Compile Include="NhanVien.cs" />
     <Compile Include="B7Bai1.cs" />
     <Compile Include="Book.cs" />
